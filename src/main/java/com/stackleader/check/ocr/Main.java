@@ -1,16 +1,10 @@
 package com.stackleader.check.ocr;
 
+import static com.stackleader.check.ocr.Librarian.detect;
+import static com.stackleader.check.ocr.Librarian.extractTessResources;
 import java.io.File;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URL;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.StandardCopyOption;
-import java.nio.file.attribute.BasicFileAttributes;
+import java.util.Collections;
+import java.util.Properties;
 import net.sourceforge.tess4j.ITessAPI;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.util.LoadLibs;
@@ -28,8 +22,8 @@ public class Main {
     private static final Logger LOG = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
-        File extractTessResources = LoadLibs.extractTessResources("linux-x86-64");
-        System.setProperty("java.library.path", extractTessResources.getPath());
+        final Properties properties = new Properties();
+        detect(properties, Collections.<String>emptyList());
         SpringApplication.run(Main.class, args);
         LOG.debug("Spring Started");
     }
@@ -43,6 +37,7 @@ public class Main {
 
     @Bean(name = "tesseract")
     public Tesseract tesseract(@Value("${tessData.dir}") String tessData) throws Exception {
+        LOG.debug("tessData.dir={}", tessData);
         Tesseract tesseract = new Tesseract();
         tesseract.setDatapath(tessData);
         tesseract.setLanguage("e13b");

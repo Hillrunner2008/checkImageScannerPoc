@@ -1,0 +1,11 @@
+version: '3'
+services:
+  checkOcr:
+    build: ./
+    image: micr-ocr-scanner-api:latest
+    container_name: micr-ocr-scanner-api
+    environment:
+      - tessData.dir=/opt/micr-ocr-scanner-api/tessdata
+    ports:
+      - 8080:8080
+    restart: always

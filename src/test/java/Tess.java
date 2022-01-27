@@ -2,7 +2,6 @@
 
 import com.recognition.software.jdeskew.ImageDeskew;
 import com.recognition.software.jdeskew.ImageUtil;
-import de.vorb.tesseract.tools.preprocessing.binarization.BinarizationUtilities;
 import de.vorb.tesseract.tools.preprocessing.binarization.Otsu;
 import de.vorb.tesseract.tools.preprocessing.binarization.Sauvola;
 import java.awt.image.BufferedImage;
@@ -12,22 +11,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Comparator;
 import java.util.List;
-import javafx.embed.swing.SwingFXUtils;
 import javax.imageio.ImageIO;
 import net.sourceforge.tess4j.ITessAPI;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.Word;
-import net.sourceforge.tess4j.util.ImageHelper;
 import net.sourceforge.tess4j.util.LoadLibs;
-import javafx.scene.image.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author dcnorris
- */
 public class Tess {
 
     private static final int FIXED_SCROLL_DELAY = 4000;
