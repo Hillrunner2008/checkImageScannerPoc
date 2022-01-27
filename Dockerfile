@@ -1,7 +1,6 @@
-FROM openjdk:17-alpine
-RUN apk update
-# Install tesseract library
-RUN apk add --no-cache tesseract-ocr
+FROM openjdk:17.0.2-jdk-bullseye
+RUN apt update -y
+RUN apt install tesseract-ocr -y
 RUN tesseract -v 
 EXPOSE 8080
 COPY tessdata /opt/micr-ocr-scanner-api/tessdata
