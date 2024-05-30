@@ -1,6 +1,8 @@
 FROM openjdk:17.0.2-jdk-bullseye
-RUN apt update -y
-RUN apt install tesseract-ocr -y
+RUN apt-get update -y && \
+    apt-get install -y tesseract-ocr && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 RUN tesseract -v 
 EXPOSE 8080
 COPY tessdata /opt/micr-ocr-scanner-api/tessdata

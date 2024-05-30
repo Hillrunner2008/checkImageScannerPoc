@@ -1,10 +1,8 @@
 package com.stackleader.check.ocr;
 
 import java.util.Optional;
-import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import static org.apache.commons.validator.routines.checkdigit.ABANumberCheckDigit.ABAN_CHECK_DIGIT;
